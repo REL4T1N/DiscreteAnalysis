@@ -46,17 +46,18 @@ def read_users(filename: str) -> List[User]:
     users = []
     with open(filename, "r", encoding="UTF-8") as f:
         reader = csv.reader(f)
+        next(reader)
         for row in reader:
             if not row:
                 continue
 
-        user = User(
-            id=int(row[0]),
-            score=int(row[1]),
-            name = row[2],
-            surname= row[3]
-        )
-        users.append(user)
+            user = User(
+                id=int(row[0]),
+                score=int(row[1]),
+                name = row[2],
+                surname= row[3]
+            )
+            users.append(user)
     return users
     
 def write_users(filename: str, users: List[User]):

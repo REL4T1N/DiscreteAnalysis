@@ -30,7 +30,7 @@
 # записываем результат в файл sorted_users_10.csv
 
 import csv
-from typing import List, Dict, Any
+from typing import List
 
 class User:
     __slots__ = ("id", "score", "name", "surname")

@@ -78,7 +78,7 @@ def main():
     file_format = 'csv'
 
     for count in counts:
-        filename = f"users_{count}.{file_format}"
+        filename = f"./data/input/users_{count}.{file_format}"
         try:
             if file_format == 'csv':
                 save_to_csv(filename, count)

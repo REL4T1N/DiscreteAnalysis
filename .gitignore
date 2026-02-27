@@ -219,5 +219,8 @@ __marimo__/
 .vscode/
 *.code-workspace
 
-*.pdf
+Кормен*
 MAI-da
+MAI-da/*
+report_pattern
+report

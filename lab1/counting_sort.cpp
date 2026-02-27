@@ -1,12 +1,11 @@
 #include <iostream>
 #include <vector>
-// #include <map>
 #include <algorithm>
 #include <memory>
 #include <string>
 #include <utility>
 
-std::vector<std::pair<int, std::string>> couting_sort(const std::vector<std::pair<int, std::string>> &data) {
+std::vector<std::pair<int, std::string>> counting_sort(const std::vector<std::pair<int, std::string>> &data) {
     if (data.empty()) return {};
 
     int max_key = data[0].first;
@@ -38,6 +37,8 @@ std::vector<std::pair<int, std::string>> couting_sort(const std::vector<std::pai
     return result;
 }
 
+
+#ifndef BENCHMARK
 int main() {
     std::ios_base::sync_with_stdio(false); 
     std::cin.tie(NULL);
@@ -49,9 +50,10 @@ int main() {
         data.emplace_back(key,value);
     }
 
-    auto sorted_data = couting_sort(data);
+    auto sorted_data = counting_sort(data);
     for (const auto& p : sorted_data) {
         std::cout << p.first << '\t' << p.second << '\n';
     }
     return 0;
 }
+#endif

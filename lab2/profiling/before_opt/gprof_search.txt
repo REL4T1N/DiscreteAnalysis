@@ -1,0 +1,525 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 28.00      0.07     0.07  6797485     0.01     0.02  frame_dummy
+ 28.00      0.14     0.07                             _init
+  8.00      0.16     0.02 62601555     0.00     0.00  std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&)
+  8.00      0.18     0.02 62601555     0.00     0.00  std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type const& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&)
+  4.00      0.19     0.01 62601555     0.00     0.00  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const
+  4.00      0.20     0.01 62601555     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const
+  4.00      0.21     0.01 62601555     0.00     0.00  std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false> const&)
+  4.00      0.22     0.01 62601555     0.00     0.00  AVLTree::TNode* const& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&)
+  4.00      0.23     0.01 13705207     0.00     0.00  AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&)
+  4.00      0.24     0.01  9166686     0.00     0.00  bool std::operator><char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  4.00      0.25     0.01  4840871     0.00     0.00  std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&)
+  0.00      0.25     0.00 32396036     0.00     0.00  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const
+  0.00      0.25     0.00 29405717     0.00     0.00  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const
+  0.00      0.25     0.00 17702960     0.00     0.00  bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.25     0.00 13705207     0.00     0.00  std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&)
+  0.00      0.25     0.00 13705207     0.00     0.00  std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&)
+  0.00      0.25     0.00 13705207     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr()
+  0.00      0.25     0.00 13705207     0.00     0.00  std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&)
+  0.00      0.25     0.00  5140872     0.00     0.00  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr()
+  0.00      0.25     0.00  4840871     0.00     0.00  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&)
+  0.00      0.25     0.00  4840871     0.00     0.00  std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&)
+  0.00      0.25     0.00  4840871     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&)
+  0.00      0.25     0.00  4840871     0.00     0.00  std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&)
+  0.00      0.25     0.00  3100000     0.00     0.00  std::char_traits<char>::length(char const*)
+  0.00      0.25     0.00  3100000     0.00     0.00  bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  0.00      0.25     0.00  1811732     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*)
+  0.00      0.25     0.00  1811732     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release()
+  0.00      0.25     0.00  1688577     0.00     0.00  unsigned char const& std::max<unsigned char>(unsigned char const&, unsigned char const&)
+  0.00      0.25     0.00  1100000     0.00     0.00  AVLTree::ToLowerCase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&)
+  0.00      0.25     0.00  1000000     0.00     0.05  AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00      0.25     0.00  1000000     0.00     0.05  AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const
+  0.00      0.25     0.00   300001     0.00     0.00  std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base()
+  0.00      0.25     0.00   300001     0.00     0.00  std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl()
+  0.00      0.25     0.00   300001     0.00     0.00  std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>()
+  0.00      0.25     0.00   200001     0.00     0.00  std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data()
+  0.00      0.25     0.00   200001     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl()
+  0.00      0.25     0.00   100000     0.00     0.01  AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long)
+  0.00      0.25     0.00   100000     0.00     0.00  AVLTree::TNode::~TNode()
+  0.00      0.25     0.00   100000     0.00     1.28  AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long)
+  0.00      0.25     0.00   100000     0.00     1.23  AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const
+  0.00      0.25     0.00   100000     0.00     0.02  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*)
+  0.00      0.25     0.00   100000     0.00     0.00  std::char_traits<char>::compare(char const*, char const*, unsigned long)
+  0.00      0.25     0.00   100000     0.00     0.00  std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_impl(AVLTree::TNode*)
+  0.00      0.25     0.00   100000     0.00     0.00  std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*)
+  0.00      0.25     0.00        1     0.00     0.00  AVLTree::AVLTree()
+  0.00      0.25     0.00        1     0.00     0.00  AVLTree::~AVLTree()
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2026 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 4.00% of 0.25 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     72.0    0.00    0.18                 main [1]
+                0.00    0.13  100000/100000      AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.05 1000000/1000000     AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+                0.00    0.00       1/11545599     frame_dummy <cycle 1> [5]
+                0.00    0.00       1/11545599     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.00 3100000/3100000     bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [41]
+                0.00    0.00       1/300001      std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [44]
+                0.00    0.00       1/300001      std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [45]
+                0.00    0.00       1/300001      std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>() [46]
+                0.00    0.00       1/200001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl() [48]
+                0.00    0.00       1/200001      std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data() [47]
+                0.00    0.00       1/1           AVLTree::AVLTree() [52]
+                0.00    0.00       1/1           AVLTree::~AVLTree() [53]
+-----------------------------------------------
+                0.00    0.13  100000/100000      main [1]
+[2]     51.3    0.00    0.13  100000         AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.12  100000/100000      AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.00  300000/11545599     frame_dummy <cycle 1> [5]
+                0.00    0.00  200000/11545599     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.00  100000/4840871     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00  100000/1811732     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00  100000/1100000     AVLTree::ToLowerCase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [43]
+                0.00    0.00  100000/4840871     std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&) [38]
+                0.00    0.00  100000/4840871     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [37]
+-----------------------------------------------
+                             1549371             AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.12  100000/100000      AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+[3]     49.2    0.00    0.12  100000+1549371 AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.04    0.02 6197484/11545599     frame_dummy <cycle 1> [5]
+                0.03    0.02 4648113/11545599     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.01 3098742/4840871     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 3098742/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.00    0.00 1649371/29405717     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+                0.00    0.00  100000/100000      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+                0.00    0.00 1549371/1811732     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00  770189/9166686     bool std::operator><char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.00 3098742/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+                0.00    0.00 3098742/32396036     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const [31]
+                0.00    0.00 3098742/4840871     std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&) [38]
+                0.00    0.00 3098742/4840871     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [37]
+                0.00    0.00 1549371/17702960     bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+                             1549371             AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+-----------------------------------------------
+[4]     44.5    0.07    0.04 11545599+492758  <cycle 1 as a whole> [4]
+                0.07    0.04 6797485+10409874     frame_dummy <cycle 1> [5]
+                0.00    0.00 5140872             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.00  100000             AVLTree::TNode::~TNode() <cycle 1> [49]
+-----------------------------------------------
+                             10409874             frame_dummy <cycle 1> [5]
+                              100000             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.00       1/11545599     main [1]
+                0.00    0.00  100000/11545599     AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/11545599     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+                0.00    0.00  300000/11545599     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.04    0.02 6197484/11545599     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[5]     43.0    0.07    0.04 6797485+10409874 frame_dummy <cycle 1> [5]
+                0.00    0.01 13143705/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.00    0.01 11402559/29405717     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+                0.00    0.00 1642129/4840871     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 13143705/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+                0.00    0.00 1811732/1811732     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00  162361/1811732     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 13143705/32396036     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const [31]
+                0.00    0.00 1688577/1688577     unsigned char const& std::max<unsigned char>(unsigned char const&, unsigned char const&) [42]
+                0.00    0.00 1642129/4840871     std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&) [38]
+                0.00    0.00 1642129/4840871     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [37]
+                              100000             AVLTree::TNode::~TNode() <cycle 1> [49]
+                               92758             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                             10409874             frame_dummy <cycle 1> [5]
+-----------------------------------------------
+                0.00    0.00  799802/62601555     AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+                0.00    0.00 3098742/62601555     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.01 13143705/62601555     frame_dummy <cycle 1> [5]
+                0.00    0.02 16153589/62601555     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.00    0.03 29405717/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+[6]     28.0    0.01    0.06 62601555         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.02    0.00 62601555/62601555     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [11]
+                0.02    0.00 62601555/62601555     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type const& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [12]
+                0.01    0.00 62601555/62601555     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false> const&) [15]
+                0.01    0.00 62601555/62601555     AVLTree::TNode* const& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]     28.0    0.07    0.00                 _init [7]
+-----------------------------------------------
+                0.00    0.05 1000000/1000000     main [1]
+[8]     20.7    0.00    0.05 1000000         AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+                0.00    0.05 1000000/1000000     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.00    0.00  799802/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.00    0.00  799802/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+                0.00    0.00 1000000/1100000     AVLTree::ToLowerCase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [43]
+-----------------------------------------------
+                0.00    0.05 1000000/1000000     AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+[9]     20.3    0.00    0.05 1000000         AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.00    0.02 16353787/29405717     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+                0.00    0.02 16153589/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.01    0.00 8396497/9166686     bool std::operator><char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.00 16153589/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+                0.00    0.00 16153589/32396036     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const [31]
+                0.00    0.00 16153589/17702960     bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+-----------------------------------------------
+                0.00    0.00 1649371/29405717     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.01 11402559/29405717     frame_dummy <cycle 1> [5]
+                0.00    0.02 16353787/29405717     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[10]    15.0    0.00    0.04 29405717         std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+                0.00    0.03 29405717/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+                0.00    0.00 29405717/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+-----------------------------------------------
+                0.02    0.00 62601555/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+[11]     8.0    0.02    0.00 62601555         std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [11]
+-----------------------------------------------
+                0.02    0.00 62601555/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+[12]     8.0    0.02    0.00 62601555         std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type const& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [12]
+-----------------------------------------------
+                0.00    0.00  100000/4840871     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.00 1642129/4840871     frame_dummy <cycle 1> [5]
+                0.00    0.01 3098742/4840871     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[13]     5.4    0.00    0.01 4840871         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.01    0.00 4840871/4840871     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&) [19]
+                0.00    0.00 4840871/13705207     AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+                0.00    0.00 4840871/13705207     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+                0.00    0.00 4840871/13705207     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+                0.00    0.00 4840871/13705207     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+                0.00    0.00 4840871/4840871     std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&) [39]
+-----------------------------------------------
+                0.00    0.00  799802/62601555     AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+                0.00    0.00 3098742/62601555     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.00 13143705/62601555     frame_dummy <cycle 1> [5]
+                0.00    0.00 16153589/62601555     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+                0.00    0.00 29405717/62601555     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [10]
+[14]     4.0    0.01    0.00 62601555         std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [14]
+-----------------------------------------------
+                0.01    0.00 62601555/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+[15]     4.0    0.01    0.00 62601555         std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false> const&) [15]
+-----------------------------------------------
+                0.01    0.00 62601555/62601555     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [6]
+[16]     4.0    0.01    0.00 62601555         AVLTree::TNode* const& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [16]
+-----------------------------------------------
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 5140872/13705207     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+[17]     4.0    0.01    0.00 13705207         AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+-----------------------------------------------
+                0.00    0.00  770189/9166686     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.01    0.00 8396497/9166686     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[18]     4.0    0.01    0.00 9166686         bool std::operator><char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+-----------------------------------------------
+                0.01    0.00 4840871/4840871     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+[19]     4.0    0.01    0.00 4840871         std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&) [19]
+-----------------------------------------------
+                               92758             frame_dummy <cycle 1> [5]
+                              200000             AVLTree::TNode::~TNode() <cycle 1> [49]
+                0.00    0.00       1/11545599     main [1]
+                0.00    0.00  200000/11545599     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.03    0.02 4648113/11545599     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[20]     1.5    0.00    0.00 5140872         std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+                0.00    0.00 5140872/13705207     AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+                0.00    0.00 5140872/13705207     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+                0.00    0.00 5140872/13705207     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+                0.00    0.00 5140872/13705207     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+                0.00    0.00 5140872/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+                              100000             frame_dummy <cycle 1> [5]
+-----------------------------------------------
+                              100000             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+                0.00    0.00  100000/100000      AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[21]     0.8    0.00    0.00  100000+100000  std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+                0.00    0.00  100000/11545599     frame_dummy <cycle 1> [5]
+                0.00    0.00  100000/100000      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/100000      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00  100000/100000      std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_impl(AVLTree::TNode*) [51]
+                0.00    0.00  100000/300001      std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [44]
+                0.00    0.00  100000/300001      std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [45]
+                0.00    0.00  100000/300001      std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>() [46]
+                0.00    0.00  100000/200001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl() [48]
+                0.00    0.00  100000/200001      std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data() [47]
+                              100000             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+-----------------------------------------------
+                0.00    0.00  100000/1811732     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.00  162361/1811732     frame_dummy <cycle 1> [5]
+                0.00    0.00 1549371/1811732     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[22]     0.5    0.00    0.00 1811732         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 1811732/13705207     AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+                0.00    0.00 1811732/13705207     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+                0.00    0.00 1811732/13705207     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+                0.00    0.00 1811732/13705207     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+-----------------------------------------------
+                0.00    0.00 1811732/1811732     frame_dummy <cycle 1> [5]
+[23]     0.5    0.00    0.00 1811732         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+                0.00    0.00 1811732/13705207     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+                0.00    0.00 1811732/13705207     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+                0.00    0.00 1811732/13705207     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+-----------------------------------------------
+                0.00    0.00  100000/100000      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[24]     0.4    0.00    0.00  100000         AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/11545599     frame_dummy <cycle 1> [5]
+                0.00    0.00  100000/300001      std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [44]
+                0.00    0.00  100000/300001      std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [45]
+                0.00    0.00  100000/300001      std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>() [46]
+                0.00    0.00  100000/200001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl() [48]
+                0.00    0.00  100000/200001      std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data() [47]
+-----------------------------------------------
+                0.00    0.00  100000/100000      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[25]     0.0    0.00    0.00  100000         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00  100000/13705207     AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [17]
+                0.00    0.00  100000/300001      std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [44]
+                0.00    0.00  100000/300001      std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [45]
+                0.00    0.00  100000/300001      std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>() [46]
+                0.00    0.00  100000/13705207     std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+                0.00    0.00  100000/13705207     std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+                0.00    0.00  100000/13705207     std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+-----------------------------------------------
+                0.00    0.00 3098742/32396036     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.00 13143705/32396036     frame_dummy <cycle 1> [5]
+                0.00    0.00 16153589/32396036     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[31]     0.0    0.00    0.00 32396036         std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const [31]
+-----------------------------------------------
+                0.00    0.00 1549371/17702960     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+                0.00    0.00 16153589/17702960     AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [9]
+[32]     0.0    0.00    0.00 17702960         bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+-----------------------------------------------
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 5140872/13705207     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+[33]     0.0    0.00    0.00 13705207         std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [33]
+-----------------------------------------------
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 5140872/13705207     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+[34]     0.0    0.00    0.00 13705207         std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [34]
+-----------------------------------------------
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 5140872/13705207     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+[35]     0.0    0.00    0.00 13705207         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [35]
+-----------------------------------------------
+                0.00    0.00  100000/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [23]
+                0.00    0.00 1811732/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [22]
+                0.00    0.00 4840871/13705207     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+                0.00    0.00 5140872/13705207     std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+[36]     0.0    0.00    0.00 13705207         std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [36]
+-----------------------------------------------
+                0.00    0.00  100000/4840871     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.00 1642129/4840871     frame_dummy <cycle 1> [5]
+                0.00    0.00 3098742/4840871     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[37]     0.0    0.00    0.00 4840871         std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [37]
+-----------------------------------------------
+                0.00    0.00  100000/4840871     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.00 1642129/4840871     frame_dummy <cycle 1> [5]
+                0.00    0.00 3098742/4840871     AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [3]
+[38]     0.0    0.00    0.00 4840871         std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&) [38]
+-----------------------------------------------
+                0.00    0.00 4840871/4840871     std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [13]
+[39]     0.0    0.00    0.00 4840871         std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&) [39]
+-----------------------------------------------
+                0.00    0.00 3100000/3100000     bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [41]
+[40]     0.0    0.00    0.00 3100000         std::char_traits<char>::length(char const*) [40]
+-----------------------------------------------
+                0.00    0.00 3100000/3100000     main [1]
+[41]     0.0    0.00    0.00 3100000         bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [41]
+                0.00    0.00 3100000/3100000     std::char_traits<char>::length(char const*) [40]
+                0.00    0.00  100000/100000      std::char_traits<char>::compare(char const*, char const*, unsigned long) [50]
+-----------------------------------------------
+                0.00    0.00 1688577/1688577     frame_dummy <cycle 1> [5]
+[42]     0.0    0.00    0.00 1688577         unsigned char const& std::max<unsigned char>(unsigned char const&, unsigned char const&) [42]
+-----------------------------------------------
+                0.00    0.00  100000/1100000     AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [2]
+                0.00    0.00 1000000/1100000     AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [8]
+[43]     0.0    0.00    0.00 1100000         AVLTree::ToLowerCase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [43]
+-----------------------------------------------
+                0.00    0.00       1/300001      main [1]
+                0.00    0.00  100000/300001      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/300001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00  100000/300001      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[44]     0.0    0.00    0.00  300001         std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [44]
+-----------------------------------------------
+                0.00    0.00       1/300001      main [1]
+                0.00    0.00  100000/300001      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/300001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00  100000/300001      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[45]     0.0    0.00    0.00  300001         std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [45]
+-----------------------------------------------
+                0.00    0.00       1/300001      main [1]
+                0.00    0.00  100000/300001      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/300001      std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*) [25]
+                0.00    0.00  100000/300001      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[46]     0.0    0.00    0.00  300001         std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>() [46]
+-----------------------------------------------
+                0.00    0.00       1/200001      main [1]
+                0.00    0.00  100000/200001      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/200001      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[47]     0.0    0.00    0.00  200001         std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data() [47]
+-----------------------------------------------
+                0.00    0.00       1/200001      main [1]
+                0.00    0.00  100000/200001      AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [24]
+                0.00    0.00  100000/200001      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[48]     0.0    0.00    0.00  200001         std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl() [48]
+-----------------------------------------------
+                              100000             frame_dummy <cycle 1> [5]
+[49]     0.0    0.00    0.00  100000         AVLTree::TNode::~TNode() <cycle 1> [49]
+                              200000             std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() <cycle 1> [20]
+-----------------------------------------------
+                0.00    0.00  100000/100000      bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*) [41]
+[50]     0.0    0.00    0.00  100000         std::char_traits<char>::compare(char const*, char const*, unsigned long) [50]
+-----------------------------------------------
+                0.00    0.00  100000/100000      std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [21]
+[51]     0.0    0.00    0.00  100000         std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_impl(AVLTree::TNode*) [51]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[52]     0.0    0.00    0.00       1         AVLTree::AVLTree() [52]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[53]     0.0    0.00    0.00       1         AVLTree::~AVLTree() [53]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2026 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [43] AVLTree::ToLowerCase(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) [37] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr(std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&) [25] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(AVLTree::TNode*)
+   [9] AVLTree::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [21] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::unique_ptr<std::default_delete<AVLTree::TNode>, void>(AVLTree::TNode*) [48] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl()
+  [24] AVLTree::TNode::TNode(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [20] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::~unique_ptr() [39] std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&)
+  [49] AVLTree::TNode::~TNode() [11] std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&) [46] std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::tuple<true, true>()
+   [2] AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [34] std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_M_head(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&) [16] AVLTree::TNode* const& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&)
+  [52] AVLTree::AVLTree()     [19] std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&&) [17] AVLTree::TNode*& std::__get_helper<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&)
+  [53] AVLTree::~AVLTree()    [45] std::_Tuple_impl<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >::_Tuple_impl() [12] std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type const& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > const&)
+   [3] AVLTree::Save(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) const [40] std::char_traits<char>::length(char const*) [36] std::tuple_element<0ul, std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> > >::type& std::get<0ul, AVLTree::TNode*, std::default_delete<AVLTree::TNode> >(std::tuple<AVLTree::TNode*, std::default_delete<AVLTree::TNode> >&)
+   [8] AVLTree::Search(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long&) const [50] std::char_traits<char>::compare(char const*, char const*, unsigned long) [42] unsigned char const& std::max<unsigned char>(unsigned char const&, unsigned char const&)
+  [14] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::get() const [38] std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data(std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>&&) [41] bool std::operator==<char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*)
+  [10] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator bool() const [47] std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_data() [18] bool std::operator><char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [31] std::unique_ptr<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::operator->() const [51] std::__uniq_ptr_data<AVLTree::TNode, std::default_delete<AVLTree::TNode>, true, true>::__uniq_ptr_impl(AVLTree::TNode*) [32] bool std::operator< <char, std::char_traits<char>, std::allocator<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+   [6] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() const [22] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::reset(AVLTree::TNode*) [7] _init
+  [15] std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false> const&) [35] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::_M_ptr() [5] frame_dummy
+  [33] std::_Head_base<0ul, AVLTree::TNode*, false>::_M_head(std::_Head_base<0ul, AVLTree::TNode*, false>&) [23] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::release() [4] <cycle 1>
+  [44] std::_Head_base<0ul, AVLTree::TNode*, false>::_Head_base() [13] std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >::__uniq_ptr_impl(std::__uniq_ptr_impl<AVLTree::TNode, std::default_delete<AVLTree::TNode> >&&)

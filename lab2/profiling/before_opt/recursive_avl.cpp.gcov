@@ -1,0 +1,332 @@
+        -:    0:Source:recursive_avl.cpp
+        -:    0:Graph:recursive_avl_cov.o-recursive_avl.gcno
+        -:    0:Data:recursive_avl_cov.o-recursive_avl.gcda
+        -:    0:Runs:1
+        -:    1:#include <iostream>
+        -:    2:#include <string>
+        -:    3:#include <memory>
+        -:    4:#include <cstdint>
+        -:    5:#include <algorithm>
+        -:    6:#include <fstream>
+        -:    7:#include <stdexcept>
+        -:    8:#include <new> // для main
+        -:    9:
+        -:   10:class AVLTree {
+        -:   11:private:
+        -:   12:    struct TNode {
+        -:   13:        std::string key;
+        -:   14:        uint64_t value;
+        -:   15:        uint8_t height;
+        -:   16:        std::unique_ptr<TNode> left;
+        -:   17:        std::unique_ptr<TNode> right;
+        -:   18:
+   999632:   19:        TNode(std::string k, uint64_t v) 
+  1999264:   20:            : key(std::move(k)), value(v), height(1), left(nullptr), right(nullptr) {}
+        -:   21:    };
+        -:   22:
+        -:   23:    std::unique_ptr<TNode> root;
+        -:   24:
+        -:   25:    // Быстрая нормализация строки In-place
+  1000000:   26:    static inline void ToLowerCase(std::string& word) {
+ 11998626:   27:        for (char& c : word) {
+  9998626:   28:            if (c >= 'A' && c <= 'Z') {
+    #####:   29:                c += 32;
+        -:   30:            }
+        -:   31:        }
+  1000000:   32:    }
+        -:   33:
+        -:   34:    // --- Вспомогательные функции ---
+        -:   35:
+ 79204274:   36:    uint8_t GetHeight(const std::unique_ptr<TNode>& node) const {
+ 79204274:   37:        return node ? node->height : 0;
+        -:   38:    }
+        -:   39:
+ 19334938:   40:    int GetBalance(const std::unique_ptr<TNode>& node) const {
+19334938*:   41:        return node ? (int)GetHeight(node->right) - (int)GetHeight(node->left) : 0;
+        -:   42:    }
+        -:   43:
+ 20267199:   44:    void UpdateHeight(const std::unique_ptr<TNode>& node) {
+ 20267199:   45:        if (node) {
+ 20267199:   46:            node->height = 1 + std::max(GetHeight(node->left), GetHeight(node->right));
+        -:   47:        }
+ 20267199:   48:    }
+        -:   49:
+        -:   50:    // --- Вращения ---
+        -:   51:
+   349407:   52:    std::unique_ptr<TNode> RotateRight(std::unique_ptr<TNode> y) {
+   698814:   53:        std::unique_ptr<TNode> x = std::move(y->left);
+   698814:   54:        y->left = std::move(x->right);
+        -:   55:        
+   349407:   56:        UpdateHeight(y);
+   349407:   57:        UpdateHeight(x);
+        -:   58:        
+   349407:   59:        x->right = std::move(y);
+   349407:   60:        return x;
+    =====:   61:    }
+        -:   62:
+   349590:   63:    std::unique_ptr<TNode> RotateLeft(std::unique_ptr<TNode> x) {
+   699180:   64:        std::unique_ptr<TNode> y = std::move(x->right);
+   699180:   65:        x->right = std::move(y->left);
+        -:   66:        
+   349590:   67:        UpdateHeight(x);
+   349590:   68:        UpdateHeight(y);
+        -:   69:        
+   349590:   70:        y->left = std::move(x);
+   349590:   71:        return y;
+    =====:   72:    }
+        -:   73:
+ 18869205:   74:    std::unique_ptr<TNode> Balance(std::unique_ptr<TNode> node) {
+18869205*:   75:        if (!node) return nullptr;
+        -:   76:
+ 18869205:   77:        UpdateHeight(node);
+ 18869205:   78:        int balance = GetBalance(node);
+        -:   79:
+        -:   80:        // Правое поддерево перевешивает
+ 18869205:   81:        if (balance == 2) {
+   232853:   82:            if (GetBalance(node->right) < 0) {
+   233054:   83:                node->right = RotateRight(std::move(node->right));
+        -:   84:            }
+   232853:   85:            return RotateLeft(std::move(node));
+        -:   86:        }
+        -:   87:        // Левое поддерево перевешивает
+ 18636352:   88:        if (balance == -2) {
+   232880:   89:            if (GetBalance(node->left) > 0) {
+   233474:   90:                node->left = RotateLeft(std::move(node->left));
+        -:   91:            }
+   232880:   92:            return RotateRight(std::move(node));
+        -:   93:        }
+        -:   94:
+ 18403472:   95:        return node;
+        -:   96:    }
+        -:   97:
+        -:   98:    // --- Основные рекурсивные функции ---
+        -:   99:
+ 19869205:  100:    std::unique_ptr<TNode> InsertImpl(std::unique_ptr<TNode> node, const std::string& key, uint64_t value, bool& added) {
+ 19869205:  101:        if (!node) {
+   999632:  102:            added = true;
+   999632:  103:            return std::make_unique<TNode>(key, value);
+        -:  104:        }
+        -:  105:
+ 18869573:  106:        if (key < node->key) {
+ 18669290:  107:            node->left = InsertImpl(std::move(node->left), key, value, added);
+  9534928:  108:        } else if (key > node->key) {
+ 19069120:  109:            node->right = InsertImpl(std::move(node->right), key, value, added);
+        -:  110:        } else {
+      368:  111:            added = false; // Ключ уже существует
+      368:  112:            return node;
+        -:  113:        }
+        -:  114:
+ 18869205:  115:        return Balance(std::move(node));
+        -:  116:    }
+        -:  117:
+    #####:  118:    std::unique_ptr<TNode> RemoveImpl(std::unique_ptr<TNode> node, const std::string& key, bool& removed) {
+    #####:  119:        if (!node) {
+    #####:  120:            removed = false;
+    #####:  121:            return nullptr;
+        -:  122:        }
+        -:  123:
+    #####:  124:        if (key < node->key) {
+    #####:  125:            node->left = RemoveImpl(std::move(node->left), key, removed);
+    #####:  126:        } else if (key > node->key) {
+    #####:  127:            node->right = RemoveImpl(std::move(node->right), key, removed);
+        -:  128:        } else {
+    #####:  129:            removed = true;
+        -:  130:            // Узел найден. Проверяем потомков.
+    #####:  131:            if (!node->left) return std::move(node->right);
+    #####:  132:            if (!node->right) return std::move(node->left);
+        -:  133:
+        -:  134:            // Если есть оба потомка: ищем максимум в левом поддереве
+    #####:  135:            TNode* maxNode = node->left.get();
+    #####:  136:            while (maxNode->right) {
+    #####:  137:                maxNode = maxNode->right.get();
+        -:  138:            }
+        -:  139:
+        -:  140:            // Копируем данные максимального узла в текущий
+    #####:  141:            node->key = maxNode->key;
+    #####:  142:            node->value = maxNode->value;
+        -:  143:
+        -:  144:            // Удаляем максимальный узел из левого поддерева
+    #####:  145:            bool dummy = false;
+    #####:  146:            node->left = RemoveImpl(std::move(node->left), node->key, dummy);
+        -:  147:        }
+        -:  148:
+    #####:  149:        return Balance(std::move(node));
+        -:  150:    }
+        -:  151:
+    #####:  152:    TNode* SearchImpl(const std::unique_ptr<TNode>& node, const std::string& key) const {
+    #####:  153:        if (!node) return nullptr;
+        -:  154:
+    #####:  155:        if (key < node->key) return SearchImpl(node->left, key);
+    #####:  156:        if (key > node->key) return SearchImpl(node->right, key);
+        -:  157:        
+    #####:  158:        return node.get(); // Нашли
+        -:  159:    }
+        -:  160:
+        -:  161:    // --- Сериализация и Десериализация ---
+        -:  162:
+    #####:  163:    void SavePreOrder(const std::unique_ptr<TNode>& node, std::ofstream& out) const {
+    #####:  164:        bool hasNode = (node != nullptr);
+    #####:  165:        out.write(reinterpret_cast<const char*>(&hasNode), sizeof(hasNode));
+        -:  166:
+    #####:  167:        if (hasNode) {
+    #####:  168:            uint16_t len = node->key.size();
+    #####:  169:            out.write(reinterpret_cast<const char*>(&len), sizeof(len));
+    #####:  170:            out.write(node->key.c_str(), len);
+    #####:  171:            out.write(reinterpret_cast<const char*>(&node->value), sizeof(node->value));
+        -:  172:
+    #####:  173:            SavePreOrder(node->left, out);
+    #####:  174:            SavePreOrder(node->right, out);
+        -:  175:        }
+    #####:  176:    }
+        -:  177:
+    #####:  178:    std::unique_ptr<TNode> LoadPreOrder(std::ifstream& in) {
+        -:  179:        bool hasNode;
+    #####:  180:        if (!in.read(reinterpret_cast<char*>(&hasNode), sizeof(hasNode))) {
+    #####:  181:            return nullptr; 
+        -:  182:        }
+        -:  183:
+    #####:  184:        if (!hasNode) return nullptr;
+        -:  185:
+        -:  186:        uint16_t len;
+    #####:  187:        if (!in.read(reinterpret_cast<char*>(&len), sizeof(len))) throw std::runtime_error("Bad format");
+        -:  188:
+    #####:  189:        std::string key(len, ' ');
+    #####:  190:        if (!in.read(&key[0], len)) throw std::runtime_error("Bad format");
+        -:  191:
+        -:  192:        uint64_t value;
+    #####:  193:        if (!in.read(reinterpret_cast<char*>(&value), sizeof(value))) throw std::runtime_error("Bad format");
+        -:  194:
+    #####:  195:        auto node = std::make_unique<TNode>(std::move(key), value);
+        -:  196:        
+        -:  197:        // Восстанавливаем потомков
+    #####:  198:        node->left = LoadPreOrder(in);
+    #####:  199:        node->right = LoadPreOrder(in);
+        -:  200:        
+    #####:  201:        UpdateHeight(node); // Высоты восстанавливаются снизу вверх
+    #####:  202:        return node;
+    #####:  203:    }
+        -:  204:
+        -:  205:public:
+        1:  206:    AVLTree() : root(nullptr) {}
+        1:  207:    ~AVLTree() = default;
+        -:  208:
+  1000000:  209:    bool Insert(std::string word, uint64_t value) {
+  1000000:  210:        ToLowerCase(word);
+  1000000:  211:        bool added = false;
+  2000000:  212:        root = InsertImpl(std::move(root), word, value, added);
+  1000000:  213:        return added;
+        -:  214:    }
+        -:  215:
+    #####:  216:    bool Remove(std::string word) {
+    #####:  217:        ToLowerCase(word);
+    #####:  218:        bool removed = false;
+    #####:  219:        root = RemoveImpl(std::move(root), word, removed);
+    #####:  220:        return removed;
+        -:  221:    }
+        -:  222:
+    #####:  223:    bool Search(std::string word, uint64_t& out_value) const {
+    #####:  224:        ToLowerCase(word);
+    #####:  225:        TNode* found = SearchImpl(root, word);
+    #####:  226:        if (found) {
+    #####:  227:            out_value = found->value;
+    #####:  228:            return true;
+        -:  229:        }
+    #####:  230:        return false;
+        -:  231:    }
+        -:  232:
+    #####:  233:    bool Save(const std::string& filepath) const {
+    #####:  234:        std::ofstream out(filepath, std::ios::binary);
+    #####:  235:        if (!out.is_open()) return false;
+        -:  236:        
+    #####:  237:        SavePreOrder(root, out);
+    #####:  238:        return out.good();
+    #####:  239:    }
+        -:  240:
+    #####:  241:    bool Load(const std::string& filepath) {
+    #####:  242:        std::ifstream in(filepath, std::ios::binary);
+    #####:  243:        if (!in.is_open()) return false;
+        -:  244:
+        -:  245:        try {
+        -:  246:            // Загружаем во временный корень, чтобы при ошибке формата не сломать текущее дерево
+    #####:  247:            std::unique_ptr<TNode> tempRoot = LoadPreOrder(in);
+        -:  248:            
+        -:  249:            // Если дошли сюда, ошибок формата не было. Подменяем дерево.
+    #####:  250:            root = std::move(tempRoot);
+    #####:  251:            return true;
+    #####:  252:        } catch (...) {
+    =====:  253:            return false;
+    =====:  254:        }
+    #####:  255:    }
+        -:  256:};
+        -:  257:
+        1:  258:int main() {
+        1:  259:    std::ios_base::sync_with_stdio(false);
+        1:  260:    std::cin.tie(NULL);
+        -:  261:
+        1:  262:    AVLTree tree;
+        1:  263:    std::string cmd;
+        -:  264:
+        -:  265:    // Читаем токены до конца файла (EOF)
+  1000001:  266:    while (std::cin >> cmd) {
+        -:  267:        try {
+  1000000:  268:            if (cmd == "+") {
+  1000000:  269:                std::string word;
+        -:  270:                uint64_t value;
+  1000000:  271:                std::cin >> word >> value;
+        -:  272:                
+  1000000:  273:                if (tree.Insert(word, value)) {
+   999632:  274:                    std::cout << "OK\n";
+        -:  275:                } else {
+      368:  276:                    std::cout << "Exist\n";
+        -:  277:                }
+  1000000:  278:            } 
+    #####:  279:            else if (cmd == "-") {
+    #####:  280:                std::string word;
+    #####:  281:                std::cin >> word;
+        -:  282:                
+    #####:  283:                if (tree.Remove(word)) {
+    #####:  284:                    std::cout << "OK\n";
+        -:  285:                } else {
+    #####:  286:                    std::cout << "NoSuchWord\n";
+        -:  287:                }
+    #####:  288:            } 
+    #####:  289:            else if (cmd == "!") {
+    #####:  290:                std::string action, path;
+    #####:  291:                std::cin >> action >> path;
+        -:  292:                
+    #####:  293:                if (action == "Save") {
+    #####:  294:                    if (tree.Save(path)) {
+    #####:  295:                        std::cout << "OK\n";
+        -:  296:                    } else {
+    #####:  297:                        std::cout << "ERROR: Failed to save file (check permissions or path)\n";
+        -:  298:                    }
+        -:  299:                } 
+    #####:  300:                else if (action == "Load") {
+    #####:  301:                    if (tree.Load(path)) {
+    #####:  302:                        std::cout << "OK\n";
+        -:  303:                    } else {
+    #####:  304:                        std::cout << "ERROR: Failed to load file (bad format or not found)\n";
+        -:  305:                    }
+        -:  306:                }
+    #####:  307:            } 
+        -:  308:            else {
+        -:  309:                // Если это не +, -, !, значит команда — это само слово для поиска
+        -:  310:                uint64_t value;
+    #####:  311:                if (tree.Search(cmd, value)) {
+    #####:  312:                    std::cout << "OK: " << value << "\n";
+        -:  313:                } else {
+    #####:  314:                    std::cout << "NoSuchWord\n";
+        -:  315:                }
+        -:  316:            }
+        -:  317:        } 
+        -:  318:        // Обработка системных ошибок по условию ТЗ
+    =====:  319:        catch (const std::bad_alloc& e) {
+    =====:  320:            std::cout << "ERROR: Out of memory\n";
+    =====:  321:        } 
+    =====:  322:        catch (const std::exception& e) {
+    =====:  323:            std::cout << "ERROR: " << e.what() << "\n";
+    =====:  324:        }
+        -:  325:    }
+        -:  326:
+        1:  327:    return 0;
+        1:  328:}

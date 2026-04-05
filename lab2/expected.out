@@ -1,0 +1,21 @@
+OK
+OK
+OK
+Exist
+OK: 100
+OK: 200
+OK: 300
+NoSuchWord
+OK
+NoSuchWord
+NoSuchWord
+OK
+OK
+OK
+NoSuchWord
+NoSuchWord
+OK
+OK: 100
+NoSuchWord
+OK: 300
+ERROR: Failed to load file (bad format or not found)

@@ -1,0 +1,413 @@
+--------------------------------------------------------------------------------
+Command:            ./iterative_avl_mem.o
+Massif arguments:   --massif-out-file=profiling/after_opt/massif.out
+ms_print arguments: profiling/after_opt/massif.out
+--------------------------------------------------------------------------------
+
+
+    MB
+68.58^                                                                      # 
+     |                                                                   ::@# 
+     |                                                               ::::::@# 
+     |                                                           @@@::: :::@# 
+     |                                                        @@@@@ ::: :::@# 
+     |                                                    @@@@@@@@@ ::: :::@# 
+     |                                                  @@@@@ @@@@@ ::: :::@# 
+     |                                              ::@@@ @@@ @@@@@ ::: :::@# 
+     |                                          @@::: @ @ @@@ @@@@@ ::: :::@#:
+     |                                       @@@@ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                                  @@@@@@@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                               @@@@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                            :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                        @@:::::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                     :@@@ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |                 @@:::@ @ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |             @@:@@ : :@ @ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |          ::@@ :@@ : :@ @ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |       @:@: @@ :@@ : :@ @ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+     |    @@@@:@: @@ :@@ : :@ @ : :::@ @@@ @ @@ @ : : @ @ @@@ @@@@@ ::: :::@#:
+   0 +----------------------------------------------------------------------->Gi
+     0                                                                   2.864
+
+Number of snapshots: 53
+ Detailed snapshots: [2, 3, 4, 5, 7, 9, 10, 12, 13, 16, 17, 22, 23, 24, 25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 48, 50 (peak)]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1     65,962,896        1,934,904        1,741,760       193,144            0
+  2    128,248,488        3,559,080        3,185,472       373,608            0
+89.50% (3,185,472B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->83.96% (2,988,352B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->83.96% (2,988,352B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->02.76% (98,304B) 0x49AE30E: _M_allocate_internal_buffer (fstream.tcc:61)
+| ->02.76% (98,304B) 0x49AE30E: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+|   ->02.76% (98,304B) 0x49AA2D3: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+|     ->02.76% (98,304B) in 3 places, all below massif's threshold (1.00%)
+|       
+->02.07% (73,728B) 0x49340EF: pool (eh_alloc.cc:235)
+| ->02.07% (73,728B) 0x49340EF: __static_initialization_and_destruction_0 (eh_alloc.cc:373)
+|   ->02.07% (73,728B) 0x49340EF: _GLOBAL__sub_I_eh_alloc.cc (eh_alloc.cc:456)
+|     ->02.07% (73,728B) 0x400F2A6: call_init (dl-init.c:74)
+|       ->02.07% (73,728B) 0x400F2A6: call_init (dl-init.c:26)
+|         ->02.07% (73,728B) 0x400F37C: _dl_init (dl-init.c:121)
+|           ->02.07% (73,728B) 0x4027C9F: ??? (in /usr/lib/ld-linux-x86-64.so.2)
+|             
+->00.70% (25,088B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  3    180,437,531        4,895,040        4,372,992       522,048            0
+89.34% (4,372,992B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->85.31% (4,175,872B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->85.31% (4,175,872B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->02.01% (98,304B) 0x49AE30E: _M_allocate_internal_buffer (fstream.tcc:61)
+| ->02.01% (98,304B) 0x49AE30E: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+|   ->02.01% (98,304B) 0x49AA2D3: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+|     ->02.01% (98,304B) in 3 places, all below massif's threshold (1.00%)
+|       
+->01.51% (73,728B) 0x49340EF: pool (eh_alloc.cc:235)
+| ->01.51% (73,728B) 0x49340EF: __static_initialization_and_destruction_0 (eh_alloc.cc:373)
+|   ->01.51% (73,728B) 0x49340EF: _GLOBAL__sub_I_eh_alloc.cc (eh_alloc.cc:456)
+|     ->01.51% (73,728B) 0x400F2A6: call_init (dl-init.c:74)
+|       ->01.51% (73,728B) 0x400F2A6: call_init (dl-init.c:26)
+|         ->01.51% (73,728B) 0x400F37C: _dl_init (dl-init.c:121)
+|           ->01.51% (73,728B) 0x4027C9F: ??? (in /usr/lib/ld-linux-x86-64.so.2)
+|             
+->00.51% (25,088B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  4    253,079,680        6,731,688        6,005,568       726,120            0
+89.21% (6,005,568B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->86.29% (5,808,448B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->86.29% (5,808,448B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.46% (98,304B) 0x49AE30E: _M_allocate_internal_buffer (fstream.tcc:61)
+| ->01.46% (98,304B) 0x49AE30E: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+|   ->01.46% (98,304B) 0x49AA2D3: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+|     ->01.46% (98,304B) in 3 places, all below massif's threshold (1.00%)
+|       
+->01.10% (73,728B) 0x49340EF: pool (eh_alloc.cc:235)
+| ->01.10% (73,728B) 0x49340EF: __static_initialization_and_destruction_0 (eh_alloc.cc:373)
+|   ->01.10% (73,728B) 0x49340EF: _GLOBAL__sub_I_eh_alloc.cc (eh_alloc.cc:456)
+|     ->01.10% (73,728B) 0x400F2A6: call_init (dl-init.c:74)
+|       ->01.10% (73,728B) 0x400F2A6: call_init (dl-init.c:26)
+|         ->01.10% (73,728B) 0x400F37C: _dl_init (dl-init.c:121)
+|           ->01.10% (73,728B) 0x4027C9F: ??? (in /usr/lib/ld-linux-x86-64.so.2)
+|             
+->00.37% (25,088B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  5    299,468,156        7,893,984        7,038,720       855,264            0
+89.17% (7,038,720B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->86.67% (6,841,600B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->86.67% (6,841,600B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.25% (98,816B) in 3 places, all below massif's threshold (1.00%)
+| 
+->01.25% (98,304B) 0x49AE30E: _M_allocate_internal_buffer (fstream.tcc:61)
+  ->01.25% (98,304B) 0x49AE30E: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (fstream.tcc:54)
+    ->01.25% (98,304B) 0x49AA2D3: __gnu_cxx::stdio_filebuf<wchar_t, std::char_traits<wchar_t> >::stdio_filebuf(_IO_FILE*, std::_Ios_Openmode, unsigned long) (stdio_filebuf.h:165)
+      ->01.25% (98,304B) in 3 places, all below massif's threshold (1.00%)
+        
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  6    354,091,244        9,253,992        8,247,616     1,006,376            0
+  7    410,111,345       10,641,144        9,480,640     1,160,504            0
+89.09% (9,480,640B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->87.24% (9,283,520B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->87.24% (9,283,520B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.85% (197,120B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  8    464,222,098       11,974,656       10,665,984     1,308,672            0
+  9    543,655,257       13,921,752       12,396,736     1,525,016            0
+89.05% (12,396,736B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->87.63% (12,199,616B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->87.63% (12,199,616B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.42% (197,120B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 10    590,927,016       15,075,624       13,422,400     1,653,224            0
+89.03% (13,422,400B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->87.73% (13,225,280B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->87.73% (13,225,280B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.31% (197,120B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 11    641,762,875       16,312,944       14,522,240     1,790,704            0
+ 12    705,303,746       17,854,680       15,892,672     1,962,008            0
+89.01% (15,892,672B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->87.91% (15,695,552B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->87.91% (15,695,552B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.10% (197,120B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 13    766,486,921       19,334,280       17,207,872     2,126,408            0
+89.00% (17,207,872B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->87.98% (17,010,752B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->87.98% (17,010,752B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->01.02% (197,120B) in 4 places, all below massif's threshold (1.00%)
+  
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 14    832,674,280       20,930,376       18,626,624     2,303,752            0
+ 15    904,101,941       22,647,504       20,152,960     2,494,544            0
+ 16    973,285,464       24,307,248       21,628,288     2,678,960            0
+88.98% (21,628,288B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.17% (21,431,168B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.17% (21,431,168B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.81% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 17  1,057,490,488       26,321,592       23,418,816     2,902,776            0
+88.97% (23,418,816B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.22% (23,221,696B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.22% (23,221,696B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.75% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 18  1,148,742,741       28,497,200       25,352,640     3,144,560            0
+ 19  1,196,877,923       29,643,240       26,371,392     3,271,848            0
+ 20  1,247,054,128       30,834,608       27,430,336     3,404,272            0
+ 21  1,299,357,471       32,075,456       28,533,312     3,542,144            0
+ 22  1,356,180,609       33,422,376       29,730,624     3,691,752            0
+88.95% (29,730,624B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.36% (29,533,504B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.36% (29,533,504B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.59% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 23  1,413,550,137       34,779,576       30,937,024     3,842,552            0
+88.95% (30,937,024B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.38% (30,739,904B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.38% (30,739,904B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.57% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 24  1,473,331,555       36,191,856       32,192,384     3,999,472            0
+88.95% (32,192,384B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.40% (31,995,264B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.40% (31,995,264B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.54% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 25  1,535,610,164       37,661,448       33,498,688     4,162,760            0
+88.95% (33,498,688B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.42% (33,301,568B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.42% (33,301,568B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.52% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 26  1,600,518,023       39,190,800       34,858,112     4,332,688            0
+88.94% (34,858,112B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.44% (34,660,992B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.44% (34,660,992B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.50% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 27  1,668,176,195       40,782,288       36,272,768     4,509,520            0
+88.94% (36,272,768B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.46% (36,075,648B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.46% (36,075,648B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.48% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28  1,738,720,256       42,438,360       37,744,832     4,693,528            0
+88.94% (37,744,832B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.48% (37,547,712B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.48% (37,547,712B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.46% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 29  1,831,015,529       44,603,328       39,669,248     4,934,080            0
+88.94% (39,669,248B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.50% (39,472,128B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.50% (39,472,128B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.44% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 30  1,907,536,628       46,395,032       41,261,824     5,133,208            0
+ 31  1,987,261,937       48,260,856       42,920,384     5,340,472            0
+ 32  2,072,918,721       50,260,584       44,697,920     5,562,664            0
+88.93% (44,697,920B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.54% (44,500,800B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.54% (44,500,800B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.39% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 33  2,160,433,308       52,301,496       46,512,064     5,789,432            0
+88.93% (46,512,064B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.55% (46,314,944B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.55% (46,314,944B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.38% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 34  2,251,638,748       54,425,352       48,399,936     6,025,416            0
+88.93% (48,399,936B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.57% (48,202,816B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.57% (48,202,816B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.36% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 35  2,298,690,475       55,519,392       49,372,416     6,146,976            0
+88.93% (49,372,416B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.57% (49,175,296B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.57% (49,175,296B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.36% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 36  2,346,708,905       56,635,464       50,364,480     6,270,984            0
+88.93% (50,364,480B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.58% (50,167,360B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.58% (50,167,360B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.35% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 37  2,395,739,349       57,773,928       51,376,448     6,397,480            0
+88.93% (51,376,448B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.59% (51,179,328B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.59% (51,179,328B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.34% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 38  2,445,778,865       58,935,288       52,408,768     6,526,520            0
+88.93% (52,408,768B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.59% (52,211,648B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.59% (52,211,648B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.33% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 39  2,496,872,334       60,119,976       53,461,824     6,658,152            0
+88.93% (53,461,824B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.60% (53,264,704B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.60% (53,264,704B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.33% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 40  2,549,008,450       61,328,424       54,536,000     6,792,424            0
+88.92% (54,536,000B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.60% (54,338,880B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.60% (54,338,880B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.32% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 41  2,602,251,411       62,561,208       55,631,808     6,929,400            0
+88.92% (55,631,808B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.61% (55,434,688B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.61% (55,434,688B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.32% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 42  2,656,290,751       63,812,784       56,744,320     7,068,464            0
+ 43  2,711,185,651       65,081,856       57,872,384     7,209,472            0
+ 44  2,767,225,917       66,376,472       59,023,104     7,353,368            0
+ 45  2,824,453,243       67,698,696       60,198,464     7,500,232            0
+ 46  2,882,833,756       69,046,464       61,396,480     7,649,984            0
+ 47  2,942,435,072       70,421,304       62,618,560     7,802,744            0
+ 48  2,976,253,958       71,201,064       63,311,680     7,889,384            0
+88.92% (63,311,680B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.64% (63,114,560B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.64% (63,114,560B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.28% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 49  3,003,281,260       71,823,720       63,865,152     7,958,568            0
+ 50  3,007,164,735       71,913,144       63,944,640     7,968,504            0
+88.92% (63,944,640B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->88.65% (63,747,520B) 0x4004FBA: AVLTree::Insert(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) (iterative_avl.cpp:156)
+| ->88.65% (63,747,520B) 0x4002921: main (iterative_avl.cpp:258)
+|   
+->00.27% (197,120B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 51  3,040,983,648       46,615,064       41,457,408     5,157,656            0
+ 52  3,074,802,559        8,310,200        7,408,640       901,560            0

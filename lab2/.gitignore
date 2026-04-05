@@ -1,0 +1,25 @@
+*.o
+*.exe
+my_dict.bin
+
+# Тяжелые сгенерированные данные
+profiling/data/*.in
+
+# Сырые бинарные дампы Valgrind
+massif.out
+
+# Мусор от компиляции LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+
+*.out
+!expected.out
+!result.out
+
+!report/
+!profiling/report/
+EOF

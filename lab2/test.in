@@ -1,0 +1,21 @@
++ Apple 100
++ banana 200
++ orange 300
++ APPLE 400
+apple
+BANANA
+orange
+cherry
+- banana
+banana
+- banana
+! Save my_dict.bin
+- apple
+- orange
+apple
+orange
+! Load my_dict.bin
+apple
+banana
+orange
+! Load fake_file.bin

@@ -4,6 +4,8 @@ my_dict.bin
 
 # Тяжелые сгенерированные данные
 profiling/data/*.in
+*.png
+Теория.md
 
 # Сырые бинарные дампы Valgrind
 massif.out

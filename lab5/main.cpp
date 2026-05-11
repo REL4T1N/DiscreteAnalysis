@@ -1,49 +1,47 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include <map>
 
 using namespace std;
 
 const int INF = 1e9;
 
-int leafEnd = -1;
 
 struct Node {
-    map<char, struct Edge*> edges;
-    Node* suffix_link;
-    int suffix_index;
-
-    Node() : suffix_link(nullptr), suffix_index(-1) {}
-};
-
-struct Edge {
     int start;
-    int* end;   // листья должны указывать на глобальный leafEnd
-    Node* target;
+    int end;
+    int link; 
+    map<char, int> next;
 
-    Edge(int s, int* e, Node* t) : start(s), end(e), target(t) {}
-    
-    int length() {
-        return *end - start + 1;
+    int length(int leafEnd) {
+        return (end == INF ? leafEnd : end) - start + 1;
     }
 };
 
 class SuffixTree {
 private:
-    Node* root;
+    vector<Node> tree; 
     string text;
-
-    // начальное состояние active point 
-    Node* active_node;
+    
+    int root;
+    int active_node;
     int active_edge;
     int active_length;
     int remainingSuffixCount;
+    int leafEnd;
 
-    bool walk_down(Edge* edge) {
-        if (active_length >= edge->length()) {
-            active_edge += edge->length();
-            active_length -= edge->length();
-            active_node = edge->target;
+    int newNode(int start, int end) {
+        tree.emplace_back({start, end, 0, {}}); // link по умолчанию 0
+        return tree.size() - 1;
+    }
+
+    bool walk_down(int child_idx) {
+        int len = tree[child_idx].length(leafEnd);
+        if (active_length >= len) {
+            active_edge += len;
+            active_length -= len;
+            active_node = child_idx;
             return true;
         }
         return false;
@@ -52,55 +50,49 @@ private:
     void extend(int i) {
         leafEnd = i;
         remainingSuffixCount++;
-        
-        Node* last_created_internal_node = nullptr;
+        int last_created_internal_node = -1;
 
         while (remainingSuffixCount > 0) {
-            
             if (active_length == 0) {
                 active_edge = i;
             }
 
-            char edge_first_char = text[active_edge];
-            
-            if (active_node->edges.find(edge_first_char) == active_node->edges.end()) {
-                Node* new_leaf = new Node();
-                active_node->edges[edge_first_char] = new Edge(i, &leafEnd, new_leaf);
-                
-                if (last_created_internal_node != nullptr) {
-                    last_created_internal_node->suffix_link = active_node;
-                    last_created_internal_node = nullptr;
+            char edge_char = text[active_edge];
+
+            // правило 2 
+            if (tree[active_node].next.find(edge_char) == tree[active_node].next.end()) {
+                tree[active_node].next[edge_char] = newNode(i, INF);
+
+                if (last_created_internal_node != -1) {
+                    tree[last_created_internal_node].link = active_node;
+                    last_created_internal_node = -1;
                 }
             } 
             else {
-                Edge* edge = active_node->edges[edge_first_char];
-                
-                if (walk_down(edge)) {
-                    continue;
-                }
+                int child_idx = tree[active_node].next[edge_char];
 
-                if (text[edge->start + active_length] == text[i]) {
+                if (walk_down(child_idx)) continue;
+
+                // правило 3
+                if (text[tree[child_idx].start + active_length] == text[i]) {
                     active_length++;
-                    if (last_created_internal_node != nullptr && active_node != root) {
-                        last_created_internal_node->suffix_link = active_node;
+                    if (last_created_internal_node != -1 && active_node != root) {
+                        tree[last_created_internal_node].link = active_node;
                     }
                     break;
                 }
 
-                Node* split_node = new Node();
-                int* split_end = new int(edge->start + active_length - 1);
+                // правило 2
+                int split_node = newNode(tree[child_idx].start, tree[child_idx].start + active_length - 1);
+                tree[active_node].next[edge_char] = split_node;
                 
-                Edge* old_edge_rem = new Edge(edge->start + active_length, edge->end, edge->target);
-                split_node->edges[text[edge->start + active_length]] = old_edge_rem;
+                tree[child_idx].start += active_length;
+                tree[split_node].next[text[tree[child_idx].start]] = child_idx;
                 
-                edge->end = split_end;
-                edge->target = split_node;
+                tree[split_node].next[text[i]] = newNode(i, INF);
 
-                Node* new_leaf = new Node();
-                split_node->edges[text[i]] = new Edge(i, &leafEnd, new_leaf);
-
-                if (last_created_internal_node != nullptr) {
-                    last_created_internal_node->suffix_link = split_node;
+                if (last_created_internal_node != -1) {
+                    tree[last_created_internal_node].link = split_node;
                 }
                 last_created_internal_node = split_node;
             }
@@ -111,70 +103,54 @@ private:
                 active_length--;
                 active_edge = i - remainingSuffixCount + 1;
             } else if (active_node != root) {
-                active_node = active_node->suffix_link ? active_node->suffix_link : root;
+                active_node = tree[active_node].link; 
             }
         }
     }
 
-    void setSuffixIndices(Node* n, int labelHeight) {
-        if (n == nullptr) return;
-        
-        bool isLeaf = true;
-        for (auto& pair : n->edges) {
-            isLeaf = false;
-            Edge* edge = pair.second;
-            setSuffixIndices(edge->target, labelHeight + edge->length());
-        }
-        
-        if (isLeaf) {
-            n->suffix_index = text.length() - labelHeight;
-        }
-    }
-
 public:
-    SuffixTree() {
-        root = new Node();
+    SuffixTree(const string& s) {
+        text = s;
+        // количество узлов в суффиксном дереве <= 2*N
+        tree.reserve(text.length() * 2 + 10); 
+        
+        root = newNode(-1, -1);
         active_node = root;
         active_edge = -1;
         active_length = 0;
         remainingSuffixCount = 0;
         leafEnd = -1;
-    }
-
-    void build_O_N(string s) {
-        text = s;
+        
         for (int i = 0; i < text.length(); ++i) {
             extend(i);
         }
-        setSuffixIndices(root, 0);
     }
 
     string getSmallestCyclicShift(int original_length) {
         string result = "";
-        Node* current = root;
+        int current = root;
         int length_needed = original_length;
 
         while (length_needed > 0) {
-            Edge* best_edge = nullptr;
+            int best_child = -1;
 
-            for (auto& pair : current->edges) {
+            for (auto& pair : tree[current].next) {
                 if (pair.first == '#') continue; 
-                
-                best_edge = pair.second;
+                best_child = pair.second;
                 break;
             }
 
-            if (best_edge == nullptr) break;
+            if (best_child == -1) break;
 
-            int edge_len = *(best_edge->end) - best_edge->start + 1;
+            int edge_len = tree[best_child].length(leafEnd);
 
             if (edge_len >= length_needed) {
-                result += text.substr(best_edge->start, length_needed);
+                result += text.substr(tree[best_child].start, length_needed);
                 length_needed = 0;
             } else {
-                result += text.substr(best_edge->start, edge_len);
+                result += text.substr(tree[best_child].start, edge_len);
                 length_needed -= edge_len;
-                current = best_edge->target;
+                current = best_child;
             }
         }
 
@@ -188,14 +164,9 @@ int main() {
 
     string s;
     while (cin >> s) {
-        int L = s.length();
-        
-        string tree_string = s + s + "#"; // # - терминальный символ
-        
-        SuffixTree tree;
-        tree.build_O_N(tree_string);
-        
-        cout << tree.getSmallestCyclicShift(L) << "\n";
+        string tree_string = s + s + "#";
+        SuffixTree tree(tree_string);
+        cout << tree.getSmallestCyclicShift(s.length()) << "\n";
     }
 
     return 0;

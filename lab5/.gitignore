@@ -1,0 +1,26 @@
+*.o
+*.exe
+*.bin
+
+# Тяжелые сгенерированные данные
+data/*.in
+*.png
+Теория.md
+
+# Сырые бинарные дампы Valgrind
+massif.out
+
+# Мусор от компиляции LaTeX
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+
+*.out
+!expected.out
+!result.out
+
+!report/
+EOF

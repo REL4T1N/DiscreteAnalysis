@@ -1,114 +1,77 @@
 \section{Описание}
-Требуется написать реализацию алгоритма сортировки подсчётом. Турум-пум-пум...
+Требуется найти лексикографически минимальный циклический сдвиг строки $S$ длины $L$.
 
-Как сказано в \cite{Kormen}: \enquote{основная идея сортировки подсчетом заключается в том, чтобы для каждого входного 
-элемента $x$ определить количество элементов, которые меньше $x$}.
+Как описано в \cite{Gasfield}, суффиксное дерево является мощнейшим индексом для решения широкого класса строковых задач. Для того чтобы получить доступ ко всем циклическим сдвигам строки, достаточно удвоить исходную строку: $S' = S + S$. Теперь каждый циклический сдвиг $S$ является подстрокой длины $L$ в строке $S'$.
 
-Или можно так:\\
-Основная идея сортировки подсчетом заключается в том, чтобы для каждого входного 
-элемента $x$ определить количество элементов, которые меньше $x$ \cite{Kormen}.
+Для решения задачи к строке $S'$ добавляется уникальный терминальный символ (например, \texttt{\#}), после чего за время $O(N)$ строится суффиксное дерево с помощью алгоритма Укконена. 
+Поиск минимального сдвига сводится к жадному спуску от корня дерева: на каждом шаге выбирается ребро, начинающееся с лексикографически минимального символа (исключая \texttt{\#}). Спуск продолжается, пока не будет накоплено $L$ символов.
 
-\pagebreak
+\textbf{Особенности реализации:}
+Алгоритм Укконена требует сложного управления памятью. В данной реализации применены следующие оптимизации:
+\begin{enumerate}
+\item Вместо динамического выделения памяти (\texttt{new Node}) узлы хранятся в непрерывном массиве \texttt{std::vector<Node>}. Это исключает утечки памяти и ускоряет аллокацию.
+\item Переходы по ребрам реализованы через \texttt{std::map<char, int>}. Поскольку красно-черное дерево внутри \texttt{map} автоматически сортирует ключи по возрастанию, при поиске минимального сдвига достаточно всегда брать первого потомка (игнорируя \texttt{\#}).
+\end{enumerate}
 
 \section{Исходный код}
-Здесь должно быть подробное описание программы и основные этапы написания кода.
+Основная структура узла дерева.
 
-На каждой непустой строке входного файла располагается пара \enquote{ключ-значение}, поэтому создадим новую 
-структуру $KV$, в которой будем хранить ключ и значение. И так далее.
+\begin{lstlisting}[language=C++]
+struct Node {
+    int start;
+    int end;
+    int link;
+    map<char, int> next;
 
-\begin{lstlisting}[language=C]
-#include "stdio.h"
-#include "stdlib.h"
+    Node(int s, int e, int l) : start(s), end(e), link(l) {}
 
-struct KV{
-	int key;
-	char value;
-} KV;
-
-void sort(struct KV * B, struct KV * Res, int max, int size){
-	int C[max+1];
-	for(int i = 0; i <= max; i++)
-		C[i] = 0;
-	for(int i = 0; i < size; i++){
-		int idx = B[i].key;
-		C[idx]++;
-	}
-	for(int i = 1; i <= max; i++)
-		C[i] = C[i] + C[i-1];
-
-	for(int i = size-1; i >= 0; i--){
-		int idx = B[i].key;
-		int pos = C[idx];
-		Res[pos-1] = B[i];
-		C[idx]--;
-	}
-}
-
-int main()
-{
-	int key;
-	char value;
-	struct KV * A = NULL;
-	int size = 0;
-	int max = 0;
-
-	while (scanf("%d\t%c",&key, &value) != EOF)
-	{
-		size++;
-		A = (struct KV *)realloc(A, size*sizeof(struct KV));
-		A[size-1].key = key;
-		A[size-1].value = value;
-		if(key > max)
-			max = key;
-	}
-	
-	struct KV Res[size];
-	sort(A, Res, max, size);
-	for(int i = 0; i < size; i++)
-		printf("%d\t%c\n", Res[i].key, Res[i].value);
-	    
-    free(A);
-
-}
-	
+    int length(int leafEnd) {
+        if (start == -1) return 0;
+        return (end == INF ? leafEnd : end) - start + 1;
+    }
+};
 \end{lstlisting}
 
-В случае, если код не помещается на одну-две страницы $A4$, тогда следует сделать табличку следующего вида:
-\begin{longtable}{|p{7.5cm}|p{7.5cm}|}
-\hline
-\rowcolor{lightgray}
-\multicolumn{2}{|c|} {main.c}\\
-\hline
-void sort(struct KV \& B, struct KV \& Res, int max, int size)&Функция сортировки подсчётом\\
-\hline
-\rowcolor{lightgray}
-\multicolumn{2}{|c|} {file1.c}\\
-\hline
-void function\_name()&Функция, \enquote{которая почти всегда работает, но неясно, что она делает}.\\
-\hline
-\end{longtable}
-В этом случае структуры или классы должны быть полностью приведены в листинге (без реализации методов).
-\begin{lstlisting}[language=C]
-struct KV{
-	int key;
-	char value;
-} KV;
+Метод спуска по суффиксному дереву для поиска ответа. Использование \texttt{cout.write} позволяет избежать медленного копирования строк.
+
+\begin{lstlisting}[language=C++]
+void printSmallest(int L) {
+    int curr = root;
+    while (L > 0) {
+        int best_node = -1;
+        for (auto const& [ch, node_idx] : tree[curr].next) {
+            if (ch == '#') continue;
+            best_node = node_idx;
+            break; 
+        }
+        if (best_node == -1) break;
+
+        int edge_len = tree[best_node].length(leafEnd);
+        int chars_to_take = min(edge_len, L);
+        
+        cout.write(&text[tree[best_node].start], chars_to_take);
+        
+        L -= chars_to_take;
+        curr = best_node;
+    }
+    cout << "\n";
+}
 \end{lstlisting}
+
+Полный листинг программы (включая логику алгоритма Укконена):
+
+\lstinputlisting[language=C++, caption={Линеаризация строки через суффиксное дерево}, label={lst:maincpp}]{../main.cpp}
 \pagebreak
 
 \section{Консоль}
+Пример сборки программы и тестирования.
+
 \begin{alltt}
-a.kukhticev$ gcc -pedantic -Wall -std=c99 -Werror -Wno-sign-compare -lm da10.c -o da10 --some_long_argument=true
-a.kukhticev$ cat test1 
-87	a
-13	b
-89	c
-13	d
-a.kukhticev$ ./da10 < test1 
-13	b
-13	d
-87	a
-89	c
+$ g++ -std=c++20 -Wall -Wextra -O3 main.cpp -o tree_build.out
+$ cat test.in
+xabcd
+$ ./tree_build.out < test.in > result.out
+$ cat result.out
+abcdx
 \end{alltt}
 \pagebreak
-

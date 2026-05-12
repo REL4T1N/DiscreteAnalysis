@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
@@ -13,6 +14,8 @@ struct Node {
     int end;
     int link; 
     map<char, int> next;
+
+    Node(int s, int e, int l) : start(s), end(e), link(l) {}
 
     int length(int leafEnd) {
         return (end == INF ? leafEnd : end) - start + 1;
@@ -32,7 +35,7 @@ private:
     int leafEnd;
 
     int newNode(int start, int end) {
-        tree.emplace_back({start, end, 0, {}}); // link по умолчанию 0
+        tree.emplace_back(start, end, 0); // default link = 0 (root)
         return tree.size() - 1;
     }
 
@@ -59,7 +62,7 @@ private:
 
             char edge_char = text[active_edge];
 
-            // правило 2 
+            // rule 2 
             if (tree[active_node].next.find(edge_char) == tree[active_node].next.end()) {
                 tree[active_node].next[edge_char] = newNode(i, INF);
 
@@ -73,7 +76,7 @@ private:
 
                 if (walk_down(child_idx)) continue;
 
-                // правило 3
+                // rule 3
                 if (text[tree[child_idx].start + active_length] == text[i]) {
                     active_length++;
                     if (last_created_internal_node != -1 && active_node != root) {
@@ -82,7 +85,7 @@ private:
                     break;
                 }
 
-                // правило 2
+                // rule 2
                 int split_node = newNode(tree[child_idx].start, tree[child_idx].start + active_length - 1);
                 tree[active_node].next[edge_char] = split_node;
                 
@@ -111,12 +114,11 @@ private:
 public:
     SuffixTree(const string& s) {
         text = s;
-        // количество узлов в суффиксном дереве <= 2*N
         tree.reserve(text.length() * 2 + 10); 
         
         root = newNode(-1, -1);
         active_node = root;
-        active_edge = -1;
+        active_edge = 0;
         active_length = 0;
         remainingSuffixCount = 0;
         leafEnd = -1;

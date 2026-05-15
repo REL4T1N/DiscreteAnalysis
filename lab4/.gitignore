@@ -5,7 +5,7 @@
 # Тяжелые сгенерированные данные
 data/*.in
 *.png
-Теория.md
+Теория.md                       
 
 # Сырые бинарные дампы Valgrind
 massif.out
@@ -21,6 +21,6 @@ massif.out
 *.out
 !expected.out
 !result.out
-
+    
 !report/
 EOF

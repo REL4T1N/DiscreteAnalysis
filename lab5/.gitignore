@@ -6,6 +6,7 @@
 data/*.in
 *.png
 *.txt
+Теория.md 
 
 
 # Сырые бинарные дампы Valgrind

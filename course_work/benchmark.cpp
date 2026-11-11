@@ -2,6 +2,8 @@
 #include <chrono>
 #include <cstdint>
 #include <iomanip>
+#include <limits>
+#include <utility>
 #include <iostream>
 #include <random>
 #include <stdexcept>
@@ -117,23 +119,122 @@ std::string lzwDecompress(std::vector<int> decodeArray, const std::string& alpha
     return result;
 }
 
-// Двоичное представление для сравнения размеров: четыре байта на код.
-Bytes lzwEncode(const std::string& input) {
-    const auto codes = lzwCompress(input, "abcdefghijklmnopqrstuvwxyz");
-    Bytes output;
-    for (int code : codes) {
-        writeCode(output, static_cast<std::uint32_t>(code));
+// Коды LZW упаковываются старшими битами вперёд.
+class BitWriter {
+    Bytes bytes;
+    unsigned int usedBits = 0;
+
+public:
+    void write(std::uint32_t code, unsigned int width) {
+        for (unsigned int remaining = width; remaining > 0; --remaining) {
+            if (usedBits == 0) {
+                bytes.push_back(0);
+            }
+            unsigned int bit = (code >> (remaining - 1)) & 1u;
+            bytes.back() |= static_cast<unsigned char>(bit << (7 - usedBits));
+            usedBits = (usedBits + 1) % 8;
+        }
     }
-    return output;
+
+    Bytes finish() {
+        return std::move(bytes);
+    }
+};
+
+class BitReader {
+    const Bytes& bytes;
+    std::size_t bytePosition = 0;
+    unsigned int usedBits = 0;
+
+public:
+    explicit BitReader(const Bytes& input) : bytes(input) {
+    }
+
+    std::uint32_t read(unsigned int width) {
+        std::uint32_t code = 0;
+        for (unsigned int index = 0; index < width; ++index) {
+            if (bytePosition == bytes.size()) {
+                throw std::runtime_error("Unexpected end of LZW bit stream");
+            }
+            unsigned int bit = (bytes[bytePosition] >> (7 - usedBits)) & 1u;
+            code = (code << 1) | bit;
+            ++usedBits;
+            if (usedBits == 8) {
+                usedBits = 0;
+                ++bytePosition;
+            }
+        }
+        return code;
+    }
+};
+
+// Оба направления повторяют рост словаря декодера.
+// Первый код не создаёт запись; каждый следующий код данных создаёт одну.
+struct LzwCodeWidth {
+    unsigned int width = 5;
+    std::uint64_t nextCode = 27;
+    bool firstCode = true;
+
+    void beforeCode() {
+        if (width < 32 && nextCode == (std::uint64_t{1} << width)) {
+            ++width;
+        }
+    }
+
+    void afterCode(std::uint32_t code) {
+        if (code == EOF_CODE) {
+            return;
+        }
+        if (firstCode) {
+            firstCode = false;
+        } else {
+            ++nextCode;
+        }
+    }
+};
+
+Bytes packLzwCodes(const std::vector<int>& codes) {
+    BitWriter writer;
+    LzwCodeWidth state;
+    for (int number : codes) {
+        state.beforeCode();
+        if (number < 0 || std::uint64_t(number) >= (std::uint64_t{1} << state.width)) {
+            throw std::runtime_error("LZW code does not fit current width");
+        }
+        auto code = static_cast<std::uint32_t>(number);
+        writer.write(code, state.width);
+        if (code == EOF_CODE) {
+            return writer.finish();
+        }
+        state.afterCode(code);
+    }
+    throw std::runtime_error("Missing LZW EOF");
+}
+
+std::vector<int> unpackLzwCodes(const Bytes& input) {
+    BitReader reader(input);
+    LzwCodeWidth state;
+    std::vector<int> codes;
+    while (true) {
+        state.beforeCode();
+        std::uint32_t code = reader.read(state.width);
+        if (code > static_cast<std::uint32_t>(std::numeric_limits<int>::max())) {
+            throw std::runtime_error("LZW code exceeds int range");
+        }
+        codes.push_back(static_cast<int>(code));
+        if (code == EOF_CODE) {
+            return codes;
+        }
+        state.afterCode(code);
+    }
+}
+
+Bytes lzwEncode(const std::string& input) {
+    return packLzwCodes(lzwCompress(input, "abcdefghijklmnopqrstuvwxyz"));
 }
 
 std::string lzwDecode(const Bytes& input, std::size_t) {
-    std::vector<int> codes;
-    std::size_t position = 0;
-    while (position < input.size()) {
-        codes.push_back(static_cast<int>(readCode(input, position)));
-    }
-    return lzwDecompress(codes, "abcdefghijklmnopqrstuvwxyz");
+    return lzwDecompress(unpackLzwCodes(input), "abcdefghijklmnopqrstuvwxyz");
 }
 
 Bytes rleEncode(const std::string& input) {
@@ -217,12 +318,49 @@ void checkCodecs(const std::vector<Codec>& codecs) {
         }
     }
 
-    Bytes expected;
-    for (auto code : {0, 1, 17, 0, 2, 0, 3, 27, 29, 26}) {
-        writeCode(expected, code);
-    }
-    if (lzwEncode("abracadabra") != expected) {
+    const std::vector<int> expectedCodes = {0, 1, 17, 0, 2, 0, 3, 27, 29, 26};
+    if (lzwCompress("abracadabra", "abcdefghijklmnopqrstuvwxyz") != expectedCodes) {
         throw std::runtime_error("Reference codes differ");
+    }
+
+    // Независимо заданный битовый образец: 6 кодов по 5 бит и 4 по 6 бит.
+    const std::string referenceBits =
+        "00000" "00001" "10001" "00000" "00010" "00000"
+        "000011" "011011" "011101" "011010" "00";
+    Bytes expectedBytes;
+    for (std::size_t position = 0; position < referenceBits.size(); position += 8) {
+        expectedBytes.push_back(static_cast<unsigned char>(
+            std::stoul(referenceBits.substr(position, 8), nullptr, 2)
+        ));
+    }
+    if (lzwEncode("abracadabra") != expectedBytes) {
+        throw std::runtime_error("Reference bit stream differs");
+    }
+
+    // EOF непосредственно до, на и после переходов ширины 5 -> 6 ... 12 -> 13.
+    // Потоки нулей корректны: каждый код обозначает букву a.
+    for (unsigned int width = 5; width <= 12; ++width) {
+        const std::size_t transition = (std::size_t{1} << width) - 26;
+        for (std::size_t count : {transition - 1, transition, transition + 1}) {
+            std::vector<int> codes(count, 0);
+            codes.push_back(EOF_CODE);
+
+            std::size_t expectedBits = 0;
+            for (std::size_t index = 0; index < codes.size(); ++index) {
+                std::uint64_t nextCode = index == 0 ? 27 : 26 + index;
+                unsigned int expectedWidth = 5;
+                while (nextCode >= (std::uint64_t{1} << expectedWidth)) {
+                    ++expectedWidth;
+                }
+                expectedBits += expectedWidth;
+            }
+            Bytes packed = packLzwCodes(codes);
+            if (packed.size() != (expectedBits + 7) / 8
+                || unpackLzwCodes(packed) != codes
+                || lzwDecode(packed, count) != std::string(count, 'a')) {
+                throw std::runtime_error("LZW width transition test failed");
+            }
+        }
     }
 }
 

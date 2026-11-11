@@ -1,0 +1,9 @@
+*.o
+*.out
+*.exe
+*.csv
+
+# Keep only the final PDF from the report directory.
+!/report/
+/report/*
+!/report/report.pdf

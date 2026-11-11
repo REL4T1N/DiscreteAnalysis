@@ -22,6 +22,9 @@ massif.out
 !expected.out
 !result.out
 
-!report/
-!profiling/report/
-EOF
+!/report/
+/report/*
+!/report/report.pdf
+!/profiling/report/
+/profiling/report/*
+!/profiling/report/report.pdf
